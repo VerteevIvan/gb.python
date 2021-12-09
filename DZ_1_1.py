@@ -1,4 +1,5 @@
 print("Задание №1")
+
 push_second = int(input('введите секунды '))
 if push_second <= 59:
  print(push_second ,"сек")
