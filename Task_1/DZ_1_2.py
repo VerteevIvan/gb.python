@@ -1,30 +1,31 @@
+'''
+2. Создать список, состоящий из кубов нечётных чисел от 1 до 1000 (куб X - третья степень числа X):
+Вычислить сумму тех чисел из этого списка, сумма цифр которых делится нацело на 7.
+Например, число «19 ^ 3 = 6859» будем включать в сумму, так как 6 + 8 + 5 + 9 = 28 – делится нацело на 7.
+Внимание: использовать только арифметические операции!
+К каждому элементу списка добавить 17 и заново вычислить сумму тех чисел из этого списка, сумма цифр которых делится нацело на 7.
+* Решить задачу под пунктом b, не создавая новый список.
+'''
 print('Задание №2')
 
-cubes = [x**3 for x in range(1000) if x % 2 != 0]
+cubes = [x**3 for x in range(1, 1001) if x % 2 != 0]
 print(cubes)
 cubes_7 = []
-
+my_num = 0
 for i in range(len(cubes)):
-    if cubes[i] > 0:
-     cubes[i] = cubes[i] % 10 + (cubes[i] % 10**2) // 10 + (cubes[i] % 10**3) // 10**2 + (cubes[i] % 10**4) // 10**3 + (cubes[i] % 10**5) // 10**4
-print(cubes)
-
-for i in range(len(cubes)):
-    if cubes[i] % 7 == 0:
+    digit = cubes[i]
+    while digit != 0:
+        my_num += digit % 10
+        digit //= 10
+    if my_num % 7 == 0:
         cubes_7.append(cubes[i])
-print("Числа в списке кратные 7:", cubes_7)
-
-cubes = [(x**3)+17 for x in range(1000) if x%2 != 0]
-print(cubes)
-cubes_7 = []
-
-for i in range(len(cubes)):
-    if cubes[i] > 0:
-     cubes[i] = cubes[i] % 10 + (cubes[i] % 10**2) // 10 + (cubes[i] % 10**3) // 10**2 + (cubes[i] % 10**4) // 10**3 + (cubes[i] % 10**5) // 10**4
-print(cubes)
-
-for i in range(len(cubes)):
-    if cubes[i] % 7 == 0:
-        cubes_7.append(cubes[i])
-print("Числа в списке кратные 7:", cubes_7)
+    print(my_num, end=', ')
+    my_num = 0
+print()
+print(cubes_7)
+print("Сумма чисел, сумма числа которых кратна 7 равна", sum(cubes_7))
+for j in range(len(cubes_7)):
+    cubes_7[j] += 17
+print(cubes_7)
+print("Сумма чисел, сумма числа которых кратна 7, после прибавления числа 17, равна", sum(cubes_7))
 
