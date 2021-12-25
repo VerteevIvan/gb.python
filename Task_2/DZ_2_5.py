@@ -1,4 +1,5 @@
 prise = [23.5, 58.88, 36.65, 9.99, 99.99, 10.55, 88.88, 74.90, 21, 69.2]
+'''
 print(id(prise))
 print(prise)
 new_prise = []
@@ -14,3 +15,5 @@ new_prise.sort()
 
 print(id(new_prise))
 print(new_prise[::-1])
+'''
+print([f'{int(pr)} руб {((pr - int(pr)) * 100):02.0f} коп' for pr in sorted(prise)[::-1][:5]])
